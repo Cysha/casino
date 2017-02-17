@@ -2,7 +2,7 @@
 
 namespace Cysha\Casino\Cards;
 
-use Cysha\Casino\Cards\Providers\StandardDeck;
+use Cysha\Casino\Cards\Providers\StandardCardProvider;
 use Cysha\Casino\Cards\Contracts\CardProvider;
 
 class Deck
@@ -14,7 +14,7 @@ class Deck
     public function __construct(CardProvider $provider = null)
     {
         if (is_null($provider)) {
-            $provider = new StandardDeck();
+            $provider = new StandardCardProvider();
         }
 
         $this->cards = $provider->getCards();

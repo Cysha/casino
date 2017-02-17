@@ -2,6 +2,7 @@
 
 namespace Cysha\Casino\Game;
 
+use Cysha\Casino\Game\Contracts\Player;
 use Illuminate\Support\Collection;
 
 class ChipStackCollection extends Collection

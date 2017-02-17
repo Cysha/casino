@@ -9,7 +9,7 @@ use Cysha\Casino\Cards\Suit;
 /**
  * The standard cards in a 52 card deck.
  */
-class StandardDeck implements CardProvider
+class StandardCardProvider implements CardProvider
 {
     public function getCards()
     {

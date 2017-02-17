@@ -3,7 +3,7 @@
 namespace Cysha\Casino\Cards\Contracts;
 
 use Cysha\Casino\Cards\CardCollection;
-use Cysha\Casino\Game\HandCollection;
+use Cysha\Casino\Cards\HandCollection;
 
 interface CardEvaluator
 {

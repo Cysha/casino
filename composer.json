@@ -1,6 +1,7 @@
 {
     "name": "cysha/casino",
     "description": "Casino Package for PHP",
+    "license": "MIT",
     "authors": [
         { "name": "xLink (Dan Aldridge)", "email": "xLink@cybershade.org" },
         { "name": "Jesus (Daniel Noel-Davies)", "email": "Daniel@noeldavi.es" }

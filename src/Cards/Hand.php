@@ -2,7 +2,7 @@
 
 namespace Cysha\Casino\Cards;
 
-use Cysha\Casino\Game\Player;
+use Cysha\Casino\Game\Contracts\Player;
 
 class Hand implements \Countable
 {

@@ -1,8 +1,6 @@
 <?php
 
-namespace Cysha\Casino\Holdem;
-
-use Cysha\Casino\Holdem\Game\Chips;
+namespace Cysha\Casino\Game;
 
 class Client
 {
