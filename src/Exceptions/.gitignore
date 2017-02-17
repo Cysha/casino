@@ -1,0 +1,9 @@
+.idea
+*.iml
+out
+gen
+vendor
+*.txt
+bin/
+coverage/
+!bin\*
