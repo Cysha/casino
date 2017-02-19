@@ -34,6 +34,9 @@ class StandardCardResult implements CardResults
      */
     private $hand = null;
 
+    /**
+     *
+     */
     public function __construct(int $rank, array $value, CardCollection $cards, string $definition, Hand $hand)
     {
         $this->rank = $rank;

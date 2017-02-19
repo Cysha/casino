@@ -62,7 +62,56 @@ class Card
         $this->suit = $suit;
     }
 
-    public static function fromString($value)
+    /**
+     * Get the Face value of the card.
+     *
+     * @return int face value
+     */
+    public function value()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Get the Suit of the card.
+     *
+     * @return Suit
+     */
+    public function suit()
+    {
+        return $this->suit;
+    }
+
+    /**
+     * Gets human readable value for a given card.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        if ($this->isAce()) {
+            return self::ACE_SYMBOL;
+        }
+        if ($this->isKing()) {
+            return self::KING_SYMBOL;
+        }
+        if ($this->isQueen()) {
+            return self::QUEEN_SYMBOL;
+        }
+        if ($this->isJack()) {
+            return self::JACK_SYMBOL;
+        }
+        if ($this->value() === 10) {
+            return self::TEN_SYMBOL;
+        }
+
+        return (string) $this->value();
+    }
+
+    /**
+     * @return Card
+     */
+    public static function fromString($value): Card
     {
         try {
             $symbol = substr($value, 1);
@@ -86,16 +135,6 @@ class Card
     }
 
     /**
-     * Get the Face value of the card.
-     *
-     * @return int face value
-     */
-    public function value()
-    {
-        return $this->value;
-    }
-
-    /**
      * @param string $value
      *
      * @return int
@@ -113,16 +152,6 @@ class Card
         }
 
         throw CardException::invalidCardString($value);
-    }
-
-    /**
-     * Get the Suit of the card.
-     *
-     * @return Suit
-     */
-    public function suit()
-    {
-        return $this->suit;
     }
 
     /**
@@ -204,32 +233,6 @@ class Card
     public function isJack()
     {
         return $this->value === static::JACK;
-    }
-
-    /**
-     * Gets human readable value for a given card.
-     *
-     * @return string
-     */
-    public function name()
-    {
-        if ($this->isAce()) {
-            return self::ACE_SYMBOL;
-        }
-        if ($this->isKing()) {
-            return self::KING_SYMBOL;
-        }
-        if ($this->isQueen()) {
-            return self::QUEEN_SYMBOL;
-        }
-        if ($this->isJack()) {
-            return self::JACK_SYMBOL;
-        }
-        if ($this->value() === 10) {
-            return self::TEN_SYMBOL;
-        }
-
-        return (string) $this->value();
     }
 
     /**

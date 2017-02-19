@@ -142,7 +142,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
      * @expectedException Cysha\Casino\Exceptions\CardException
      * @test
      */
-    public function cannot_create_card_from_invalid_suit_number()
+    public function cannot_create_card_from_invalid_suit()
     {
         Card::fromString('45');
     }

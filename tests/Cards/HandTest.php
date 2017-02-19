@@ -20,7 +20,7 @@ class HandTest extends \PHPUnit_Framework_TestCase
     {
         $player = Player::fromClient(Client::register('xLink', Chips::zero()), Chips::zero());
 
-        $hand = Hand::createUsingString('5h 5d', $player);
+        $hand = Hand::fromString('5h 5d', $player);
 
         $expected = CardCollection::fromString('5h 5d');
 
@@ -34,7 +34,7 @@ class HandTest extends \PHPUnit_Framework_TestCase
     {
         $player = Player::fromClient(Client::register('xLink', Chips::zero()), Chips::zero());
 
-        $hand = Hand::createUsingString('5h', $player);
+        $hand = Hand::fromString('5h', $player);
         $hand->addCard(Card::fromString('5d'));
 
         $this->assertCount(2, $hand);

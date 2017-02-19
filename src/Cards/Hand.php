@@ -34,7 +34,7 @@ class Hand implements \Countable
      *
      * @return static
      */
-    public static function createUsingString(string $cards, Player $player)
+    public static function fromString(string $cards, Player $player)
     {
         $cards = explode(' ', $cards);
 
