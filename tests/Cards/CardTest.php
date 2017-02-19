@@ -47,31 +47,40 @@ class CardTest extends \PHPUnit_Framework_TestCase
         $card = new Card(Card::KING, Suit::diamond());
         $this->assertTrue($card->isKing());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals($card->name(), 'K');
+        $this->assertEquals('K', $card->name());
 
         $card = new Card(Card::QUEEN, Suit::diamond());
         $this->assertTrue($card->isQueen());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals($card->name(), 'Q');
+        $this->assertEquals('Q', $card->name());
 
         $card = new Card(Card::JACK, Suit::diamond());
         $this->assertTrue($card->isJack());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals($card->name(), 'J');
+        $this->assertEquals('J', $card->name());
 
         $card = new Card(Card::ACE, Suit::diamond());
         $this->assertTrue($card->isAce());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals($card->name(), 'A');
+        $this->assertEquals('A', $card->name());
+
+        $card = new Card(Card::ACE_HIGH, Suit::diamond());
+        $this->assertTrue($card->isAce());
+        $this->assertTrue($card->isFaceCard());
+        $this->assertEquals('A', $card->name());
     }
 
     /** @test **/
     public function is_number_card()
     {
         $card = new Card(10, Suit::diamond());
+        $this->assertEquals('T', $card->name());
         $this->assertTrue($card->isNumberCard());
 
         $card = new Card(Card::ACE, Suit::diamond());
+        $this->assertFalse($card->isNumberCard());
+
+        $card = new Card(Card::ACE_HIGH, Suit::diamond());
         $this->assertFalse($card->isNumberCard());
     }
 
@@ -80,6 +89,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
     {
         $card = new Card(5, Suit::diamond());
 
+        $this->assertEquals('5', $card->name());
         $this->assertFalse($card->isAce());
         $this->assertFalse($card->isKing());
         $this->assertFalse($card->isQueen());
@@ -129,7 +139,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Cysha\Casino\Exceptions\CardException
+     * @expectedException Cysha\Casino\Exceptions\CardException
      * @test
      */
     public function cannot_create_card_from_invalid_suit_number()
@@ -138,7 +148,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Cysha\Casino\Exceptions\CardException
+     * @expectedException Cysha\Casino\Exceptions\CardException
      * @test
      */
     public function cannot_create_card_from_invalid_card_number()

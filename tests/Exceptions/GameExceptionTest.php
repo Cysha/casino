@@ -2,13 +2,13 @@
 
 namespace Cysha\Casino\Tests\Exceptions;
 
+use Cysha\Casino\Exceptions\GameException;
+use Cysha\Casino\Game\Chips;
+use Cysha\Casino\Game\Client;
+use Cysha\Casino\Game\DefaultGame;
+use Cysha\Casino\Game\Player;
 use PHPUnit_Framework_TestCase;
 use Ramsey\Uuid\Uuid;
-use Cysha\Casino\Game\Client;
-use Cysha\Casino\Exceptions\GameException;
-// use Cysha\Casino\Holdem\Game\CashGame;
-use Cysha\Casino\Game\Chips;
-use Cysha\Casino\Game\Player;
 
 class GameExceptionTest extends PHPUnit_Framework_TestCase
 {
@@ -18,17 +18,20 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedException, GameException::invalidId());
     }
 
-    public function test_the_unexpected_suit_can_accept_custom_messages()
+    public function test_the_already_registered_can_accept_custom_messages()
     {
         $expectedException = new GameException('custom message');
-        $this->assertEquals($expectedException, GameException::invalidId('custom message'));
+        $client = Client::register('xLink', Chips::fromAmount(0));
+        $game = DefaultGame::setUp(Uuid::uuid4(), 'test game', Chips::zero());
+
+        $this->assertEquals($expectedException, GameException::alreadyRegistered($client, $game, 'custom message'));
     }
 
-    /*public function test_the_insufficient_funds_has_a_default_message()
+    public function test_the_insufficient_funds_has_a_default_message()
     {
         $uuid = Uuid::uuid4();
         $gameName = 'game name';
-        $game = CashGame::setUp($uuid, $gameName, Chips::fromAmount(100));
+        $game = DefaultGame::setUp($uuid, $gameName, Chips::fromAmount(100));
         $player = Player::fromClient(Client::register('xLink', Chips::fromAmount(0)));
 
         $expectedException = new GameException(sprintf(
@@ -44,7 +47,7 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
     {
         $uuid = Uuid::uuid4();
         $gameName = 'game name';
-        $game = CashGame::setUp($uuid, $gameName, Chips::fromAmount(100));
+        $game = DefaultGame::setUp($uuid, $gameName, Chips::fromAmount(100));
         $player = Player::fromClient(Client::register('xLink', Chips::fromAmount(0)));
         $expectedMessage = 'xLink cor play "game name", the silly tart ran out of moniez';
 
@@ -55,5 +58,5 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
         ));
 
         $this->assertEquals($expectedException, GameException::insufficientFunds($player, $game, $expectedMessage));
-    }*/
+    }
 }
