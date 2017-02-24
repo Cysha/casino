@@ -27,7 +27,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
         $suit = Suit::club();
         $card = new Card(Card::JACK, $suit);
 
-        $this->assertEquals($card, $card->name().$card->suit()->symbol());
+        $this->assertEquals($card, $card->shortName().$card->suit()->symbol());
     }
 
     /** @test **/
@@ -47,27 +47,37 @@ class CardTest extends \PHPUnit_Framework_TestCase
         $card = new Card(Card::KING, Suit::diamond());
         $this->assertTrue($card->isKing());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals('K', $card->name());
+        $this->assertEquals('K', $card->shortName());
+        $this->assertEquals('King', $card->longName());
+        $this->assertEquals('King of Diamonds', $card->longIdentifier());
 
         $card = new Card(Card::QUEEN, Suit::diamond());
         $this->assertTrue($card->isQueen());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals('Q', $card->name());
+        $this->assertEquals('Q', $card->shortName());
+        $this->assertEquals('Queen', $card->longName());
+        $this->assertEquals('Queen of Diamonds', $card->longIdentifier());
 
         $card = new Card(Card::JACK, Suit::diamond());
         $this->assertTrue($card->isJack());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals('J', $card->name());
+        $this->assertEquals('J', $card->shortName());
+        $this->assertEquals('Jack', $card->longName());
+        $this->assertEquals('Jack of Diamonds', $card->longIdentifier());
 
         $card = new Card(Card::ACE, Suit::diamond());
         $this->assertTrue($card->isAce());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals('A', $card->name());
+        $this->assertEquals('A', $card->shortName());
+        $this->assertEquals('Ace', $card->longName());
+        $this->assertEquals('Ace of Diamonds', $card->longIdentifier());
 
         $card = new Card(Card::ACE_HIGH, Suit::diamond());
         $this->assertTrue($card->isAce());
         $this->assertTrue($card->isFaceCard());
-        $this->assertEquals('A', $card->name());
+        $this->assertEquals('A', $card->shortName());
+        $this->assertEquals('Ace', $card->longName());
+        $this->assertEquals('Ace of Diamonds', $card->longIdentifier());
     }
 
     /** @test **/
@@ -75,6 +85,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
     {
         $card = new Card(10, Suit::diamond());
         $this->assertEquals('T', $card->name());
+        $this->assertEquals('Ten', $card->longName());
         $this->assertTrue($card->isNumberCard());
 
         $card = new Card(Card::ACE, Suit::diamond());
@@ -95,6 +106,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($card->isQueen());
         $this->assertFalse($card->isJack());
         $this->assertFalse($card->isFaceCard());
+        $this->assertEquals('Five', $card->longName());
     }
 
     /** @test */

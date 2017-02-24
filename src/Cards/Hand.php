@@ -85,4 +85,9 @@ class Hand implements \Countable
     {
         $this->cards = $this->cards()->push($card);
     }
+
+    public function __toString()
+    {
+        return $this->cards()->__toString();
+    }
 }

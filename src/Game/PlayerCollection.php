@@ -18,4 +18,20 @@ class PlayerCollection extends Collection
             return $player->name() === $playerName;
         });
     }
+
+    /**
+     * @return LeftToAct
+     */
+    public function resetPlayerListFromSeat(int $seatNumber): self
+    {
+        $new = $this->sortBy(function ($value, $idx) use ($seatNumber) {
+            if ($idx < $seatNumber) {
+                return ($idx + 1) * 10;
+            }
+
+            return $idx;
+        });
+
+        return new self($new->values());
+    }
 }

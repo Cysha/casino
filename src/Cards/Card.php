@@ -13,6 +13,17 @@ class Card
     const KING = 13;
     const ACE_HIGH = 14;
 
+    const ACE_SYMBOL = 'A';
+    const KING_SYMBOL = 'K';
+    const QUEEN_SYMBOL = 'Q';
+    const JACK_SYMBOL = 'J';
+    const TEN_SYMBOL = 'T';
+
+    const ACE_LONG_NAME = 'Ace';
+    const KING_LONG_NAME = 'King';
+    const QUEEN_LONG_NAME = 'Queen';
+    const JACK_LONG_NAME = 'Jack';
+
     private static $faceCards = [
         self::ACE,
         self::JACK,
@@ -28,12 +39,6 @@ class Card
         self::KING => self::KING_SYMBOL,
         10 => self::TEN_SYMBOL,
     ];
-
-    const ACE_SYMBOL = 'A';
-    const KING_SYMBOL = 'K';
-    const QUEEN_SYMBOL = 'Q';
-    const JACK_SYMBOL = 'J';
-    const TEN_SYMBOL = 'T';
 
     /**
      * The Suit of this card.
@@ -89,6 +94,16 @@ class Card
      */
     public function name()
     {
+        return $this->shortName();
+    }
+
+    /**
+     * Gets human readable value for a given card.
+     *
+     * @return string
+     */
+    public function shortName()
+    {
         if ($this->isAce()) {
             return self::ACE_SYMBOL;
         }
@@ -106,6 +121,31 @@ class Card
         }
 
         return (string) $this->value();
+    }
+
+    /**
+     * Gets human readable value for a given card.
+     *
+     * @return string
+     */
+    public function longName()
+    {
+        if ($this->isAce()) {
+            return self::ACE_LONG_NAME;
+        }
+        if ($this->isKing()) {
+            return self::KING_LONG_NAME;
+        }
+        if ($this->isQueen()) {
+            return self::QUEEN_LONG_NAME;
+        }
+        if ($this->isJack()) {
+            return self::JACK_LONG_NAME;
+        }
+
+        $number = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
+
+        return ucwords($number->format($this->value()));
     }
 
     /**
@@ -247,12 +287,28 @@ class Card
     }
 
     /**
+     * @return string
+     */
+    public function shortIdentifier()
+    {
+        return sprintf('%s%s', $this->shortName(), $this->suit()->symbol());
+    }
+
+    /**
+     * @return string
+     */
+    public function longIdentifier()
+    {
+        return sprintf('%s of %s', $this->longName(), $this->suit()->name());
+    }
+
+    /**
      * Returns a human readable string for outputting the card.
      *
      * @return string
      */
     public function __toString()
     {
-        return sprintf('%s%s', $this->name(), $this->suit()->symbol());
+        return $this->shortIdentifier();
     }
 }

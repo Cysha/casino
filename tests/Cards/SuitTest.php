@@ -15,22 +15,22 @@ class SuitTest extends \PHPUnit_Framework_TestCase
     {
         $suit = Suit::club();
         $this->assertEquals(Suit::CLUB, $suit->value());
-        $this->assertEquals('club', $suit->name());
+        $this->assertEquals('Clubs', $suit->name());
         $this->assertEquals('♣', $suit->symbol());
 
         $suit = Suit::diamond();
         $this->assertEquals(Suit::DIAMOND, $suit->value());
-        $this->assertEquals('diamond', $suit->name());
+        $this->assertEquals('Diamonds', $suit->name());
         $this->assertEquals('♦', $suit->symbol());
 
         $suit = Suit::heart();
         $this->assertEquals(Suit::HEART, $suit->value());
-        $this->assertEquals('heart', $suit->name());
+        $this->assertEquals('Hearts', $suit->name());
         $this->assertEquals('♥', $suit->symbol());
 
         $suit = Suit::spade();
         $this->assertEquals(Suit::SPADE, $suit->value());
-        $this->assertEquals('spade', $suit->name());
+        $this->assertEquals('Spades', $suit->name());
         $this->assertEquals('♠', $suit->symbol());
     }
 

@@ -11,6 +11,8 @@ interface CardEvaluator
     /**
      * @param CardCollection $board
      * @param Hand           $hand
+     *
+     * @return CardResults
      */
     public static function evaluate(CardCollection $board, Hand $hand): CardResults;
 

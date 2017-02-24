@@ -21,6 +21,11 @@ final class Suit
     const HEART_LETTER = 'h';
     const SPADE_LETTER = 's';
 
+    const CLUB_LONG_NAME = 'Clubs';
+    const DIAMOND_LONG_NAME = 'Diamonds';
+    const HEART_LONG_NAME = 'Hearts';
+    const SPADE_LONG_NAME = 'Spades';
+
     private static $symbols = [
         self::CLUB => self::CLUB_SYMBOL,
         self::DIAMOND => self::DIAMOND_SYMBOL,
@@ -33,6 +38,13 @@ final class Suit
         self::DIAMOND => self::DIAMOND_LETTER,
         self::HEART => self::HEART_LETTER,
         self::SPADE => self::SPADE_LETTER,
+    ];
+
+    private static $names = [
+        self::CLUB => self::CLUB_LONG_NAME,
+        self::DIAMOND => self::DIAMOND_LONG_NAME,
+        self::HEART => self::HEART_LONG_NAME,
+        self::SPADE => self::SPADE_LONG_NAME,
     ];
 
     /**
@@ -138,17 +150,17 @@ final class Suit
     {
         switch ($this->suit) {
             case static::CLUB:
-                $suit = 'club';
+                $suit = static::CLUB_LONG_NAME;
             break;
             case static::DIAMOND:
-                $suit = 'diamond';
+                $suit = static::DIAMOND_LONG_NAME;
             break;
             case static::HEART:
-                $suit = 'heart';
+                $suit = static::HEART_LONG_NAME;
             break;
             default:
             case static::SPADE:
-                $suit = 'spade';
+                $suit = static::SPADE_LONG_NAME;
             break;
         }
 
