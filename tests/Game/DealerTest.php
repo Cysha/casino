@@ -86,8 +86,8 @@ class DealerTest extends BaseGameTestCase
     {
         $evaluator = $this->createMock(CardEvaluator::class);
         $evaluator->method('evaluateHands')
-                  ->withAnyParameters()
-                  ->willReturn(ResultCollection::make())
+            ->withAnyParameters()
+            ->willReturn(ResultCollection::make())
         ;
 
         return $evaluator;

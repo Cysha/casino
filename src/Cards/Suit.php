@@ -151,17 +151,17 @@ final class Suit
         switch ($this->suit) {
             case static::CLUB:
                 $suit = static::CLUB_LONG_NAME;
-            break;
+                break;
             case static::DIAMOND:
                 $suit = static::DIAMOND_LONG_NAME;
-            break;
+                break;
             case static::HEART:
                 $suit = static::HEART_LONG_NAME;
-            break;
+                break;
             default:
             case static::SPADE:
                 $suit = static::SPADE_LONG_NAME;
-            break;
+                break;
         }
 
         return $suit;
@@ -177,17 +177,17 @@ final class Suit
         switch ($this->suit) {
             case static::CLUB:
                 $symbol = self::CLUB_SYMBOL;
-            break;
+                break;
             case static::DIAMOND:
                 $symbol = self::DIAMOND_SYMBOL;
-            break;
+                break;
             case static::HEART:
                 $symbol = self::HEART_SYMBOL;
-            break;
+                break;
             default:
             case static::SPADE:
                 $symbol = self::SPADE_SYMBOL;
-            break;
+                break;
         }
 
         return $symbol;
@@ -209,7 +209,7 @@ final class Suit
     public function equals($suit)
     {
         return get_class($suit) === static::class
-            && $suit->suit === $this->suit;
+        && $suit->suit === $this->suit;
     }
 
     /**

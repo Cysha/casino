@@ -2,8 +2,8 @@
 
 namespace Cysha\Casino\Cards;
 
-use Cysha\Casino\Cards\Providers\StandardCardProvider;
 use Cysha\Casino\Cards\Contracts\CardProvider;
+use Cysha\Casino\Cards\Providers\StandardCardProvider;
 
 class Deck
 {

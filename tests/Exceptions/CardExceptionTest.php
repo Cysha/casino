@@ -2,8 +2,8 @@
 
 namespace Cysha\Casino\Tests\Exceptions;
 
-use PHPUnit_Framework_TestCase;
 use Cysha\Casino\Exceptions\CardException;
+use PHPUnit_Framework_TestCase;
 
 class CardExceptionTest extends PHPUnit_Framework_TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Cysha\Casino\Cards\Providers;
 
-use Cysha\Casino\Cards\Contracts\CardProvider;
 use Cysha\Casino\Cards\Card;
+use Cysha\Casino\Cards\Contracts\CardProvider;
 use Cysha\Casino\Cards\Suit;
 
 /**

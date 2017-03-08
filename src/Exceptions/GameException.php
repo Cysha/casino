@@ -2,9 +2,9 @@
 
 namespace Cysha\Casino\Exceptions;
 
-use Exception;
-use Cysha\Casino\Game\Contracts\Game;
 use Cysha\Casino\Game\Client;
+use Cysha\Casino\Game\Contracts\Game;
+use Exception;
 
 class GameException extends Exception
 {

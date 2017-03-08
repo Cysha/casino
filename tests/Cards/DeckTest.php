@@ -2,9 +2,9 @@
 
 namespace Cysha\Casino\Tests\Cards;
 
-use Cysha\Casino\Cards\Providers\EmptyDeck;
 use Cysha\Casino\Cards\Card;
 use Cysha\Casino\Cards\Deck;
+use Cysha\Casino\Cards\Providers\EmptyDeck;
 
 class DeckTest extends \PHPUnit_Framework_TestCase
 {

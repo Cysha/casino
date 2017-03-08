@@ -36,7 +36,7 @@ class Player extends Client implements PlayerContract
     public function equals(PlayerContract $object): bool
     {
         return static::class === get_class($object)
-            && $this->name() === $object->name()
-            && $this->wallet() === $object->wallet();
+        && $this->name() === $object->name()
+        && $this->wallet() === $object->wallet();
     }
 }

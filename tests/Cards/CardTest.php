@@ -2,9 +2,9 @@
 
 namespace Cysha\Casino\Tests\Cards;
 
-use InvalidArgumentException;
 use Cysha\Casino\Cards\Card;
 use Cysha\Casino\Cards\Suit;
+use InvalidArgumentException;
 
 class CardTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,7 +27,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
         $suit = Suit::club();
         $card = new Card(Card::JACK, $suit);
 
-        $this->assertEquals($card, $card->shortName().$card->suit()->symbol());
+        $this->assertEquals($card, $card->shortName() . $card->suit()->symbol());
     }
 
     /** @test **/

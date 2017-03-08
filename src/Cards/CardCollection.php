@@ -33,7 +33,7 @@ class CardCollection extends Collection
         $name = rtrim($name, 's');
 
         return $this->filter(function (Card $card) use ($name) {
-            return $card->suit()->equals(call_user_func(Suit::class.'::'.$name));
+            return $card->suit()->equals(call_user_func(Suit::class . '::' . $name));
         });
     }
 

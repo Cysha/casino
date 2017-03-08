@@ -2,8 +2,8 @@
 
 namespace Cysha\Casino\Cards;
 
-use InvalidArgumentException;
 use Cysha\Casino\Exceptions\CardException;
+use InvalidArgumentException;
 
 class Card
 {
@@ -61,7 +61,7 @@ class Card
         $this->value = $value;
 
         if (!$this->isValidCardValue()) {
-            throw new InvalidArgumentException('Invalid card value given: '.$value);
+            throw new InvalidArgumentException('Invalid card value given: ' . $value);
         }
 
         $this->suit = $suit;
@@ -283,7 +283,7 @@ class Card
     public function equals($card)
     {
         return get_class($card) === static::class
-            && $card->value === $this->value;
+        && $card->value === $this->value;
     }
 
     /**

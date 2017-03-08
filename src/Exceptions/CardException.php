@@ -38,7 +38,7 @@ class CardException extends Exception
      *
      * @return static
      */
-    public static function noCardValueGroupsFound(int $count,  $message = null)
+    public static function noCardValueGroupsFound(int $count, $message = null)
     {
         $defaultMessage = sprintf('Tried to find %d cards with the same value, but failed', $count);
         $message = is_null($message) ? $defaultMessage : $message;

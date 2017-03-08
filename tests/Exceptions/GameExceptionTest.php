@@ -27,6 +27,15 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedException, GameException::alreadyRegistered($client, $game, 'custom message'));
     }
 
+    public function test_the_not_registered_can_accept_custom_messages()
+    {
+        $expectedException = new GameException('custom message');
+        $client = Client::register('xLink', Chips::fromAmount(0));
+        $game = DefaultGame::setUp(Uuid::uuid4(), 'test game', Chips::zero());
+
+        $this->assertEquals($expectedException, GameException::notRegistered($client, $game, 'custom message'));
+    }
+
     public function test_the_insufficient_funds_has_a_default_message()
     {
         $uuid = Uuid::uuid4();

@@ -2,8 +2,8 @@
 
 namespace Cysha\Casino\Tests\Cards;
 
-use Cysha\Casino\Cards\CardCollection;
 use Cysha\Casino\Cards\Card;
+use Cysha\Casino\Cards\CardCollection;
 use Cysha\Casino\Cards\Suit;
 
 class CardCollectionTest extends \PHPUnit_Framework_TestCase
