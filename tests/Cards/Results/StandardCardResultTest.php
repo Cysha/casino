@@ -8,6 +8,7 @@ use Cysha\Casino\Cards\Results\StandardCardResult;
 use Cysha\Casino\Game\Chips;
 use Cysha\Casino\Game\Client;
 use Cysha\Casino\Game\Player;
+use Ramsey\Uuid\Uuid;
 
 class StandardCardResultTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +19,7 @@ class StandardCardResultTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function can_create_a_standard_card_result()
     {
-        $player = Player::fromClient(Client::register('xLink', Chips::fromAmount(650)), Chips::fromAmount(2000));
+        $player = Player::fromClient(Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(650)), Chips::fromAmount(2000));
         $cardCollection = CardCollection::make();
         $hand = Hand::fromString('5h 5s', $player);
 

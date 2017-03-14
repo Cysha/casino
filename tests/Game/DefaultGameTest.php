@@ -80,7 +80,7 @@ class DefaultGameTest extends BaseGameTestCase
         $name = 'Demo Cash Game';
         $minimumBuyIn = Chips::fromAmount(500);
         $playerName = 'xLink';
-        $xLink = Client::register($playerName, $minimumBuyIn);
+        $xLink = Client::register(Uuid::uuid4(), $playerName, $minimumBuyIn);
 
         $game = DefaultGame::setUp($id, $name, $minimumBuyIn);
         $game->registerPlayer($xLink);
@@ -101,8 +101,8 @@ class DefaultGameTest extends BaseGameTestCase
 
         $game = DefaultGame::setUp($id, $name, $minimumBuyIn);
 
-        $xLink = Client::register('xLink', Chips::fromAmount(1000));
-        $Jebus = Client::register('Jebus', Chips::fromAmount(1000));
+        $xLink = Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(1000));
+        $Jebus = Client::register(Uuid::uuid4(), 'Jebus', Chips::fromAmount(1000));
 
         $game->registerPlayer($xLink);
         $game->registerPlayer($Jebus);
@@ -124,8 +124,8 @@ class DefaultGameTest extends BaseGameTestCase
 
         $game = DefaultGame::setUp($id, $name, $minimumBuyIn);
 
-        $xLink = Client::register('xLink', Chips::fromAmount(1000));
-        $Jebus = Client::register('Jebus', Chips::fromAmount(1000));
+        $xLink = Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(1000));
+        $Jebus = Client::register(Uuid::uuid4(), 'Jebus', Chips::fromAmount(1000));
 
         $game->registerPlayer($xLink);
         $game->registerPlayer($Jebus);
@@ -135,7 +135,7 @@ class DefaultGameTest extends BaseGameTestCase
     /** @test */
     public function a_player_can_buy_into_a_game_with_the_minimum_buy_in()
     {
-        $client = Client::register('Bob', Chips::fromAmount(1000));
+        $client = Client::register(Uuid::uuid4(), 'Bob', Chips::fromAmount(1000));
         $minimumBuyIn = Chips::fromAmount(500);
 
         $game = DefaultGame::setUp(Uuid::uuid4(), 'Cash Game', $minimumBuyIn);
@@ -158,7 +158,7 @@ class DefaultGameTest extends BaseGameTestCase
         $uuid = Uuid::uuid4();
         $gameName = 'game name';
         $game = DefaultGame::setUp($uuid, $gameName, Chips::fromAmount(100));
-        $player = Client::register('xLink', Chips::fromAmount(0));
+        $player = Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(0));
 
         $game->registerPlayer($player);
     }
@@ -168,8 +168,8 @@ class DefaultGameTest extends BaseGameTestCase
     {
         $game = DefaultGame::setUp(Uuid::uuid4(), 'game name', Chips::fromAmount(100));
 
-        $xLink = Client::register('xLink', Chips::fromAmount(5500));
-        $jesus = Client::register('jesus', Chips::fromAmount(5500));
+        $xLink = Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(5500));
+        $jesus = Client::register(Uuid::uuid4(), 'jesus', Chips::fromAmount(5500));
 
         $game->registerPlayer($xLink, Chips::fromAmount(5000));
         $game->registerPlayer($jesus, Chips::fromAmount(5000));

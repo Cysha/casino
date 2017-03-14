@@ -21,7 +21,7 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
     public function test_the_already_registered_can_accept_custom_messages()
     {
         $expectedException = new GameException('custom message');
-        $client = Client::register('xLink', Chips::fromAmount(0));
+        $client = Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(0));
         $game = DefaultGame::setUp(Uuid::uuid4(), 'test game', Chips::zero());
 
         $this->assertEquals($expectedException, GameException::alreadyRegistered($client, $game, 'custom message'));
@@ -30,7 +30,7 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
     public function test_the_not_registered_can_accept_custom_messages()
     {
         $expectedException = new GameException('custom message');
-        $client = Client::register('xLink', Chips::fromAmount(0));
+        $client = Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(0));
         $game = DefaultGame::setUp(Uuid::uuid4(), 'test game', Chips::zero());
 
         $this->assertEquals($expectedException, GameException::notRegistered($client, $game, 'custom message'));
@@ -41,7 +41,7 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
         $uuid = Uuid::uuid4();
         $gameName = 'game name';
         $game = DefaultGame::setUp($uuid, $gameName, Chips::fromAmount(100));
-        $player = Player::fromClient(Client::register('xLink', Chips::fromAmount(0)));
+        $player = Player::fromClient(Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(0)));
 
         $expectedException = new GameException(sprintf(
             '%s doesnt have sufficient funds to register for game: "%s"',
@@ -57,7 +57,7 @@ class GameExceptionTest extends PHPUnit_Framework_TestCase
         $uuid = Uuid::uuid4();
         $gameName = 'game name';
         $game = DefaultGame::setUp($uuid, $gameName, Chips::fromAmount(100));
-        $player = Player::fromClient(Client::register('xLink', Chips::fromAmount(0)));
+        $player = Player::fromClient(Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(0)));
         $expectedMessage = 'xLink cor play "game name", the silly tart ran out of moniez';
 
         $expectedException = new GameException(sprintf(

@@ -12,6 +12,7 @@ use Cysha\Casino\Game\Chips;
 use Cysha\Casino\Game\Client;
 use Cysha\Casino\Game\Dealer;
 use Cysha\Casino\Game\Player;
+use Ramsey\Uuid\Uuid;
 
 class DealerTest extends BaseGameTestCase
 {
@@ -65,7 +66,7 @@ class DealerTest extends BaseGameTestCase
         $evaluator = $this->createEvaluatorMock();
         $dealer = Dealer::startWork(new Deck(), $evaluator);
 
-        $player = Player::fromClient(Client::register('xLink', Chips::fromAmount(650)));
+        $player = Player::fromClient(Client::register(Uuid::uuid4(), 'xLink', Chips::fromAmount(650)));
 
         $cardCollection = CardCollection::make();
         $handCollection = HandCollection::make([

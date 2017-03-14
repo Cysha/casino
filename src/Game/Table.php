@@ -4,13 +4,14 @@ namespace Cysha\Casino\Game;
 
 use Cysha\Casino\Game\Contracts\Dealer;
 use Cysha\Casino\Game\Contracts\Player;
+use Ramsey\Uuid\Uuid;
 
 class Table
 {
     /**
-     * @var PlayerCollection
+     * @var Uuid
      */
-    private $players;
+    private $id;
 
     /**
      * @var Dealer
@@ -18,13 +19,20 @@ class Table
     private $dealer;
 
     /**
+     * @var PlayerCollection
+     */
+    private $players;
+
+    /**
      * Table constructor.
      *
-     * @param Dealer           $dealer
+     * @param Uuid $id
+     * @param Dealer $dealer
      * @param PlayerCollection $players
      */
-    private function __construct(Dealer $dealer, PlayerCollection $players)
+    private function __construct(Uuid $id, Dealer $dealer, PlayerCollection $players)
     {
+        $this->id = $id;
         $this->dealer = $dealer;
         $this->players = $players;
     }
@@ -32,17 +40,17 @@ class Table
     /**
      * @return Table
      */
-    public static function setUp(Dealer $dealer, PlayerCollection $players)
+    public static function setUp(Uuid $id, Dealer $dealer, PlayerCollection $players)
     {
-        return new self($dealer, $players);
+        return new self($id, $dealer, $players);
     }
 
     /**
-     * @return PlayerCollection
+     * @return Uuid
      */
-    public function players(): PlayerCollection
+    public function id(): Uuid
     {
-        return $this->players;
+        return $this->id;
     }
 
     /**
@@ -53,6 +61,13 @@ class Table
         return $this->dealer;
     }
 
+    /**
+     * @return PlayerCollection
+     */
+    public function players(): PlayerCollection
+    {
+        return $this->players;
+    }
     /**
      * @param Player $player
      *

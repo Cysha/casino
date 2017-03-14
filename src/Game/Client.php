@@ -2,8 +2,15 @@
 
 namespace Cysha\Casino\Game;
 
+use Ramsey\Uuid\Uuid;
+
 class Client
 {
+    /**
+     * @var Uuid
+     */
+    private $id;
+
     /**
      * @var string
      */
@@ -17,11 +24,13 @@ class Client
     /**
      * ClientTest constructor.
      *
+     * @param Uuid $id
      * @param string $name
-     * @param Chips  $chips
+     * @param Chips $chips
      */
-    public function __construct($name, Chips $wallet = null)
+    public function __construct(Uuid $id, $name, Chips $wallet = null)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->wallet = $wallet ?? Chips::zero();
     }
@@ -32,9 +41,17 @@ class Client
      *
      * @return Client
      */
-    public static function register($name, Chips $chips = null): Client
+    public static function register(Uuid $id, $name, Chips $chips = null): Client
     {
-        return new static($name, $chips);
+        return new static($id, $name, $chips);
+    }
+
+    /**
+     * @return Uuid
+     */
+    public function id(): Uuid
+    {
+        return $this->id;
     }
 
     /**

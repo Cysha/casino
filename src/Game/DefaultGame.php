@@ -6,6 +6,7 @@ use Cysha\Casino\Cards\Deck;
 use Cysha\Casino\Cards\Evaluators\StandardEvaluator;
 use Cysha\Casino\Exceptions\GameException;
 use Cysha\Casino\Game\Contracts\Game;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 final class DefaultGame implements Game
@@ -143,7 +144,7 @@ final class DefaultGame implements Game
         $this->tables = TableCollection::make($groupedPlayers->map(function (PlayerCollection $players) {
             $dealer = Dealer::startWork(new Deck(), new StandardEvaluator());
 
-            return Table::setUp($dealer, $players);
+            return Table::setUp(Uuid::uuid4(), $dealer, $players);
         })->toArray());
     }
 

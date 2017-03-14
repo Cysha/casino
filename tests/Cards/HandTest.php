@@ -8,6 +8,7 @@ use Cysha\Casino\Cards\Hand;
 use Cysha\Casino\Game\Chips;
 use Cysha\Casino\Game\Client;
 use Cysha\Casino\Game\Player;
+use Ramsey\Uuid\Uuid;
 
 class HandTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +19,7 @@ class HandTest extends \PHPUnit_Framework_TestCase
     /** @test **/
     public function can_create_hands()
     {
-        $player = Player::fromClient(Client::register('xLink', Chips::zero()), Chips::zero());
+        $player = Player::fromClient(Client::register(Uuid::uuid4(), 'xLink', Chips::zero()), Chips::zero());
 
         $hand = Hand::fromString('5h 5d', $player);
 
@@ -32,7 +33,7 @@ class HandTest extends \PHPUnit_Framework_TestCase
     /** @test **/
     public function can_add_card_to_a_hand()
     {
-        $player = Player::fromClient(Client::register('xLink', Chips::zero()), Chips::zero());
+        $player = Player::fromClient(Client::register(Uuid::uuid4(), 'xLink', Chips::zero()), Chips::zero());
 
         $hand = Hand::fromString('5h', $player);
         $hand->addCard(Card::fromString('5d'));
