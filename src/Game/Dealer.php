@@ -9,8 +9,9 @@ use Cysha\Casino\Cards\Deck;
 use Cysha\Casino\Cards\HandCollection;
 use Cysha\Casino\Cards\ResultCollection;
 use Cysha\Casino\Game\Contracts\Dealer as DealerContract;
+use Cysha\Casino\Game\Contracts\Name as NameContract;
 
-class Dealer implements DealerContract
+class Dealer implements DealerContract, NameContract
 {
     /**
      * @var Deck
@@ -21,6 +22,11 @@ class Dealer implements DealerContract
      * @var CardEvaluator
      */
     private $cardEvaluationRules;
+
+    /**
+     * @var string
+     */
+    private $name = 'Dealer';
 
     /**
      * Dealer constructor.
@@ -67,6 +73,14 @@ class Dealer implements DealerContract
     public function shuffleDeck()
     {
         $this->deck()->shuffle();
+    }
+
+    /**
+     * @return string
+     */
+    public function name(): string
+    {
+        return $this->name;
     }
 
     /**

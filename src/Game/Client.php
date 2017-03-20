@@ -2,9 +2,10 @@
 
 namespace Cysha\Casino\Game;
 
+use Cysha\Casino\Game\Contracts\Name as NameContract;
 use Ramsey\Uuid\Uuid;
 
-class Client
+class Client implements NameContract
 {
     /**
      * @var Uuid
