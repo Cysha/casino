@@ -140,6 +140,17 @@ class CardCollectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function can_filter_out_duplicate_value_cards()
+    {
+        $result = CardCollection::fromString('8s 4c 6d 7h 3c 5c 7c');
+
+        $expected = CardCollection::fromString('3c 4c 5c 6d 7h 8s');
+
+        $this->assertInstanceOf(CardCollection::class, $result);
+        $this->assertEquals($expected, $result->uniqueByValue());
+    }
+
+    /** @test */
     public function can_switch_value_of_ace_from_high_to_low_or_viceversa()
     {
         $result = CardCollection::fromString('Ad Qc');

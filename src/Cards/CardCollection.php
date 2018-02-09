@@ -123,6 +123,27 @@ class CardCollection extends Collection
     }
 
     /**
+     * Filter out duplicate card values out of the collection.
+     *
+     * @return static
+     */
+    public function uniqueByValue()
+    {
+        return $this
+            ->sortByDesc(function (Card $card) {
+                return $card->value();
+            }, SORT_NUMERIC)
+            ->groupBy(function (Card $card) {
+                return $card->value();
+            })
+            ->map(function($group) {
+                return $group->first();
+            })
+            ->reverse()
+            ->values();
+    }
+
+    /**
      * Replaces any Aces found in the collection with values of 14.
      *
      * @return static
