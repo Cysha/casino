@@ -1,0 +1,9 @@
+language: php
+
+php:
+  - 7.1
+  - 7.0
+
+script:
+  - composer install --no-interaction --no-suggest --no-scripts --prefer-source
+  - bin/phpunit
